@@ -1,7 +1,7 @@
 <?php
 /*
 	Section: Content Copyright
-	Author: {wm}digital
+	Author: William Mincy
 	Author URI: http://slipperysource.com
 	Description: Allows you to place a customizable copyright statement within your template that auto-updates the year.
 	Class Name: wmContentCopyright
