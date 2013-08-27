@@ -7,6 +7,7 @@
 	Class Name: wmContentCopyright
 	Filter: Component
 	Loading: active,templates,main,sb_1,sb_2,sb_wrap, footer, footermore
+	V3: true
 */
 
 /**
@@ -70,7 +71,7 @@ class wmContentCopyright extends PageLinesSection {
 								'type' => 'check',
 								'title' => __('Show multiple years','wmContentCopyright'),
 								'label' => __('Show multiple years','wmContentCopyright'),
-								'ref' => __('Checking this will show the year over time to be the start year up through the currnet year (i.e. 2010 - 2013) as opposed to the current year (2013)','wmContentCopyright'),
+								'ref' => __('Checking this will show the year over time to be the start year up through the currnet year (i.e. 2010 - 2013) as opposed to the currene year (2013)','wmContentCopyright'),
 								'default' => false
 							)
 					)
