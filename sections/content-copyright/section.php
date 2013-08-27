@@ -29,8 +29,8 @@ class wmContentCopyright extends PageLinesSection {
 						array(
 								'key' => 'WMCopyright_Symbol',
 								'type' => 'check',
-								'title' => __('Display copyright symbol'),
-								'label' => __('Display copyright symbol'),
+								'title' => __('Display copyright symbol','wmContentCopyright'),
+								'label' => __('Display copyright symbol','wmContentCopyright'),
 								'default' => false
 							), 
 						array(
@@ -42,8 +42,8 @@ class wmContentCopyright extends PageLinesSection {
 						array(
 								'key' => 'WMCopyright_Text',
 								'type' => 'check',
-								'title' => __('Display copyright text'),
-								'label' => __('Display copyright text'),
+								'title' => __('Display copyright text','wmContentCopyright'),
+								'label' => __('Display copyright text','wmContentCopyright'),
 								'default' => true
 							),
 						array (
