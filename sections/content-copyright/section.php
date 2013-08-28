@@ -21,11 +21,12 @@ class wmContentCopyright extends PageLinesSection {
 	// Options Panel
 	function section_opts(){
 		$options = array();
-		$options[] = array(
+		$options[] = 
+			array(
 				'key' => 'WMCopyrightefaults',
 				'type' => 'multi',
 				'title' => __('Copyright display options','wmContentCopyright'),
-				'help' => __('<p>Styling the output on the page is possible by way of the provided CSS class names applied to the elements. By default we do not apply any CSS rules and inherit form the site\'s overall CSS rules.
+				'help' => __('<p>Styling the output on the page is possible by way of the text formatting options within this panel and the provided CSS class names applied to the elements. For additional fine tuning these are the CSS class names available and what they correspond to within the section:
 								<dl>
 									<dt><em>wmContentCopyright</em></dt>
 										<dd>This class is applied to the wrapper <code>span</code> for the entire section. It is recommended that this be styled first since all other classes will inherit from it.</dd>
@@ -36,55 +37,97 @@ class wmContentCopyright extends PageLinesSection {
 								</dl>
 								</p>','wmContentCopyright'),
 				'opts' => array(
-						array(
-								'key' => 'WMCopyright_Symbol',
-								'type' => 'check',
-								'title' => __('Display copyright symbol','wmContentCopyright'),
-								'label' => __('Display copyright symbol','wmContentCopyright'),
-								'default' => false
-							), 
-						array(
-								'key' => 'WMCopyright_Title',
-								'type' => 'text',
-								'title' => __('Copyright owner','wmContentCopyright'),
-								'label' => __('Copyright owner','wmContentCopyright')
-							),
-						array(
-								'key' => 'WMCopyright_Text',
-								'type' => 'check',
-								'title' => __('Display copyright text','wmContentCopyright'),
-								'label' => __('Display copyright text','wmContentCopyright'),
-								'default' => true
-							),
-						array (
-								'key' => 'WMCopyright_AllRightsReserved', 
-								'type' => 'check',
-								'title' => __('Show "All Rights Reserved" statement','wmContentCopyright'),
-								'label' => __('Show "All Rights Reserved" statement','wmContentCopyright'),
-								'default' => true
-							),
-						array(
-								'key' => 'WMCopyright_Roman',
-								'type' => 'check',
-								'title' => __('Show as Roman numerals','wmContentCopyright'),
-								'label' => __('Show as Roman numerals','wmContentCopyright'),
-								'default' => false
-							),
-						array(
-								'key' => 'WMCopyright_BeginningYear',
-								'type' => 'text',
-								'title' => __('Copyright beginning year','wmContentCopyright'),
-								'label' => __('Copyright beginning year','wmContentCopyright')
-							),
-						array(
-								'key' => 'WMCopyright_MultipleYears',
-								'type' => 'check',
-								'title' => __('Show multiple years','wmContentCopyright'),
-								'label' => __('Show multiple years','wmContentCopyright'),
-								'ref' => __('Checking this will show the year over time to be the start year up through the current year (i.e. 2010 - 2013) as opposed to the current year (2013)','wmContentCopyright'),
-								'default' => false
-							)
-					)
+							array(
+									'key' => 'WMCopyright_Symbol',
+									'type' => 'check',
+									'title' => __('Display copyright symbol','wmContentCopyright'),
+									'label' => __('Display copyright symbol','wmContentCopyright'),
+									'default' => false
+								), 
+							array(
+									'key' => 'WMCopyright_Title',
+									'type' => 'text',
+									'title' => __('Copyright owner','wmContentCopyright'),
+									'label' => __('Copyright owner','wmContentCopyright')
+								),
+							array(
+									'key' => 'WMCopyright_Text',
+									'type' => 'check',
+									'title' => __('Display copyright text','wmContentCopyright'),
+									'label' => __('Display copyright text','wmContentCopyright'),
+									'default' => true
+								),
+							array (
+									'key' => 'WMCopyright_AllRightsReserved', 
+									'type' => 'check',
+									'title' => __('Show "All Rights Reserved" statement','wmContentCopyright'),
+									'label' => __('Show "All Rights Reserved" statement','wmContentCopyright'),
+									'default' => true
+								),
+							array(
+									'key' => 'WMCopyright_Roman',
+									'type' => 'check',
+									'title' => __('Show as Roman numerals','wmContentCopyright'),
+									'label' => __('Show as Roman numerals','wmContentCopyright'),
+									'default' => false
+								),
+							array(
+									'key' => 'WMCopyright_BeginningYear',
+									'type' => 'text',
+									'title' => __('Copyright beginning year','wmContentCopyright'),
+									'label' => __('Copyright beginning year','wmContentCopyright')
+								),
+							array(
+									'key' => 'WMCopyright_MultipleYears',
+									'type' => 'check',
+									'title' => __('Show multiple years','wmContentCopyright'),
+									'label' => __('Show multiple years','wmContentCopyright'),
+									'ref' => __('Checking this will show the year over time to be the start year up through the current year (i.e. 2010 - 2013) as opposed to the current year (2013)','wmContentCopyright'),
+									'default' => false
+								)
+						)
+		);
+		$options[] = array(
+				'type'		=> 'multi',
+				'key'		=> 'WMCopyrightTextConfig', 
+				'title' => __('Text formatting options','wmContentCopyright'),
+				'opts'		=> array(
+					array(
+						'key'			=> 'wmContentCopyright_txtbox_pad',
+						'type' 			=> 'text',
+						'label' 	=> __( 'Padding <small>(CSS Shorthand)</small>', 'wmContentCopyright' ),
+						'ref'		=> __( 'This option uses CSS padding shorthand. For example, use "15px 30px" for 15px padding top/bottom, and 30 left/right.', 'wmContentCopyright' ),
+						
+					),
+					array(
+						'key'			=> 'wmContentCopyright_txtbox_font_size',
+						'type'			=> 'count_select',
+						'count_start'	=> 10,
+						'count_number'	=> 30,
+						'suffix'		=> 'px',
+						'title'			=> __( 'Textbox Font Size', 'wmContentCopyright' ),
+						'default'		=> '', 
+					),
+					
+					array(
+						'type' 			=> 'select',
+						'key'			=> 'wmContentCopyright_txtbox_align',
+						'label' 		=> 'Alignment',
+						'opts'			=> array(
+							'textleft'		=> array('name' => 'Align Left (Default)'),
+							'textright'		=> array('name' => 'Align Right'),
+							'textcenter'	=> array('name' => 'Center'),
+							'textjustify'	=> array('name' => 'Justify'),
+						)
+					),
+					array(
+						'type' 			=> 'select_animation',
+						'key'			=> 'wmContentCopyright_txtbox_animation',
+						'label' 		=> __( 'Viewport Animation', 'wmContentCopyright' ),
+						'help' 			=> __( 'Optionally animate the appearance of this section on view.', 'wmContentCopyright' ),
+					),
+					
+				)
 			);
 		return $options;
 	}
@@ -155,7 +198,13 @@ class wmContentCopyright extends PageLinesSection {
 	
 	// Content Display
 	function section_template() {
-		echo '<span class="wmContentCopyright">';
+		
+		$padding = ($this->opt('wmContentCopyright_txtbox_pad')) ? sprintf('padding: %s;', $this->opt('textbox_pad')) : '';
+		$fontSize = ($this->opt('wmContentCopyright_txtbox_font_size')) ? sprintf('font-size: %spx;', $this->opt('wmContentCopyright_txtbox_font_size')) : '';
+		$alignment = ploption('wmContentCopyright_txtbox_align', $this->oset);
+		$animation = ploption('wmContentCopyright_txtbox_animation', $this->oset);
+		
+		echo '<span class="wmContentCopyright '.$animation.' '.$alignment.'" style="width:100%;display:block;'.$fontSize.$padding.'">';
 		if(ploption('WMCopyright_Text', $this->oset)) {
 			_e('Copyright ','wmContentCopyright');
 		}
