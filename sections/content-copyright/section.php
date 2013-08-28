@@ -6,7 +6,7 @@
 	Description: Allows you to place a customizable copyright statement within your template that auto-updates the year.
 	Class Name: wmContentCopyright
 	Filter: Component
-	Loading: active,templates,main,sb_1,sb_2,sb_wrap, footer, footermore
+	Loading: active,templates,main,sb_1,sb_2,sb_wrap,footer,footermore
 	V3: true
 */
 
@@ -25,6 +25,16 @@ class wmContentCopyright extends PageLinesSection {
 				'key' => 'WMCopyrightefaults',
 				'type' => 'multi',
 				'title' => __('Copyright display options','wmContentCopyright'),
+				'help' => __('<p>Styling the output on the page is possible by way of the provided CSS class names applied to the elements. By default we do not apply any CSS rules and inherit form the site\'s overall CSS rules.
+								<dl>
+									<dt><em>wmContentCopyright</em></dt>
+										<dd>This class is applied to the wrapper <code>span</code> for the entire section. It is recommended that this be styled first since all other classes will inherit from it.</dd>
+									<dt><em>wmContentCopyrightSymbol</em></dt>
+										<dd>This class is applied to the wrapper <code>span</code> for the copyright symbol itself, allowing it to be individually targeted.</dd>
+									<dt><em>wmContentCopyrightOwner</em></dt>
+										<dd>This class is applied to the wrapper <code>span</code> for the copyright owner text, and wraps any <code>HTML</code> or text that may be used.</dd>
+								</dl>
+								</p>','wmContentCopyright'),
 				'opts' => array(
 						array(
 								'key' => 'WMCopyright_Symbol',
@@ -36,8 +46,8 @@ class wmContentCopyright extends PageLinesSection {
 						array(
 								'key' => 'WMCopyright_Title',
 								'type' => 'text',
-								'title' => __('Copyright ower','wmContentCopyright'),
-								'label' => __('Copyright ower','wmContentCopyright')
+								'title' => __('Copyright owner','wmContentCopyright'),
+								'label' => __('Copyright owner','wmContentCopyright')
 							),
 						array(
 								'key' => 'WMCopyright_Text',
@@ -71,7 +81,7 @@ class wmContentCopyright extends PageLinesSection {
 								'type' => 'check',
 								'title' => __('Show multiple years','wmContentCopyright'),
 								'label' => __('Show multiple years','wmContentCopyright'),
-								'ref' => __('Checking this will show the year over time to be the start year up through the currnet year (i.e. 2010 - 2013) as opposed to the currene year (2013)','wmContentCopyright'),
+								'ref' => __('Checking this will show the year over time to be the start year up through the current year (i.e. 2010 - 2013) as opposed to the current year (2013)','wmContentCopyright'),
 								'default' => false
 							)
 					)
@@ -146,7 +156,9 @@ class wmContentCopyright extends PageLinesSection {
 	// Content Display
 	function section_template() {
 		echo '<span class="wmContentCopyright">';
-		_e('Copyright ','wmContentCopyright');
+		if(ploption('WMCopyright_Text', $this->oset)) {
+			_e('Copyright ','wmContentCopyright');
+		}
 		if(ploption('WMCopyright_Symbol', $this->oset)) {
 			echo ' <span class="wmContentCopyrightSymbol">&copy;</span> ';
 		}
