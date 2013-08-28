@@ -16,7 +16,7 @@
  * @author William Mincy
  */
 class wmContentCopyright extends PageLinesSection {
-	const version = '1.0.0';
+	const version = '1.0.1';
 	
 	// Options Panel
 	function section_opts(){
