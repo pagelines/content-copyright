@@ -53,8 +53,8 @@ class wmContentCopyright extends PageLinesSection {
 							array(
 									'key' => 'WMCopyright_Text',
 									'type' => 'check',
-									'title' => __('Display copyright text','wmContentCopyright'),
-									'label' => __('Display copyright text','wmContentCopyright'),
+									'title' => __('Display "Copyright" text','wmContentCopyright'),
+									'label' => __('Display "Copyright" text','wmContentCopyright'),
 									'default' => true
 								),
 							array (
@@ -119,13 +119,7 @@ class wmContentCopyright extends PageLinesSection {
 							'textcenter'	=> array('name' => 'Center'),
 							'textjustify'	=> array('name' => 'Justify'),
 						)
-					),
-					array(
-						'type' 			=> 'select_animation',
-						'key'			=> 'wmContentCopyright_txtbox_animation',
-						'label' 		=> __( 'Viewport Animation', 'wmContentCopyright' ),
-						'help' 			=> __( 'Optionally animate the appearance of this section on view.', 'wmContentCopyright' ),
-					),
+					)
 					
 				)
 			);
@@ -199,12 +193,11 @@ class wmContentCopyright extends PageLinesSection {
 	// Content Display
 	function section_template() {
 		
-		$padding = ($this->opt('wmContentCopyright_txtbox_pad')) ? sprintf('padding: %s;', $this->opt('textbox_pad')) : '';
+		$padding = ($this->opt('wmContentCopyright_txtbox_pad')) ? sprintf('padding: %s;', $this->opt('wmContentCopyright_txtbox_pad', $this->oset)) : '';
 		$fontSize = ($this->opt('wmContentCopyright_txtbox_font_size')) ? sprintf('font-size: %spx;', $this->opt('wmContentCopyright_txtbox_font_size')) : '';
 		$alignment = ploption('wmContentCopyright_txtbox_align', $this->oset);
-		$animation = ploption('wmContentCopyright_txtbox_animation', $this->oset);
 		
-		echo '<span class="wmContentCopyright '.$animation.' '.$alignment.'" style="width:100%;display:block;'.$fontSize.$padding.'">';
+		echo '<span class="wmContentCopyright '.$alignment.'" style="width:100%;display:block;'.$fontSize.$padding.'">';
 		if(ploption('WMCopyright_Text', $this->oset)) {
 			_e('Copyright ','wmContentCopyright');
 		}
